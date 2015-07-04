@@ -8,7 +8,7 @@ The basic features are
 3) The main thread continuously looks out for Messages and Resources.
 4) Processed messages are sent to the gateway.
 5) When a message is terminated, further messages are subject to exception.
-6) Messages of Cancelled Group are not sent to the dateway. 
+6) Messages of Cancelled Group are not sent to the gateway. 
 
 
 Build.
