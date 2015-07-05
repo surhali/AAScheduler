@@ -24,6 +24,7 @@ public abstract class AMResourceManager {
 	
 	/***
 	 * This method is called by the user to provide resources to the resource manager.
+	 * A new Resource with the given name is created.It has default values of processing time and priority.
 	 * @param name
 	 */
 	public abstract void addResource(String name);
@@ -32,6 +33,11 @@ public abstract class AMResourceManager {
 	 * @param resourceList
 	 */
 	public abstract void addResources(List<AMResource> resourceList);
+	/**
+	 * A resource created is added to existing set of resources.
+	 * @param resource
+	 */
+	public abstract  void addResource(AMResource resource);
 	
 	/**
 	 * This method is used to process Messages.
