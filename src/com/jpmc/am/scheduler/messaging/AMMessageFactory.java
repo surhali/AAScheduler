@@ -1,6 +1,5 @@
 package com.jpmc.am.scheduler.messaging;
 
-import com.jpmc.am.scheduler.messaging.AMMessageGroup.GroupStatus;
 
 /***
  * Message factory is a  factory method which masks the details of creating of
