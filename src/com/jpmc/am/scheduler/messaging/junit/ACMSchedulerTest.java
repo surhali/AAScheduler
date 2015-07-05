@@ -14,10 +14,12 @@ import com.jpmc.am.scheduler.messaging.AMGateway;
 import com.jpmc.am.scheduler.messaging.AMMessage;
 import com.jpmc.am.scheduler.messaging.AMMessageFactory;
 import com.jpmc.am.scheduler.messaging.AMMessageGroup;
-import com.jpmc.am.scheduler.messaging.AMResourceManager;
 import com.jpmc.am.scheduler.messaging.AMMessageGroup.GroupStatus;
+import com.jpmc.am.scheduler.messaging.AMResource;
+import com.jpmc.am.scheduler.messaging.AMResourceManager;
 import com.jpmc.am.scheduler.messaging.exceptions.TerminationException;
 import com.jpmc.am.scheduler.messaging.impl.AMGatewayImpl;
+import com.jpmc.am.scheduler.messaging.impl.AMResourceImpl;
 import com.jpmc.am.scheduler.messaging.impl.AMResourceManagerImpl;
 import com.jpmc.am.scheduler.messaging.impl.AMSchedulerImpl;
 /**
@@ -84,7 +86,8 @@ public class ACMSchedulerTest {
 		//the thread return to stable state.
 		asi = new AMSchedulerImpl(resManager,
 				aMGateway,new GroupPriorityAlogorithm());
-		resManager.addResource("1");
+		AMResource resource = new AMResourceImpl("1",10);
+		resManager.addResource(resource);
 		
 		AMMessage mess = AMMessageFactory.createMessage("Trail1");
 	    AMMessageGroup grp3 = new AMMessageGroup("Group3");
@@ -104,7 +107,9 @@ public class ACMSchedulerTest {
 	    asi.start();
 	    //Once the group is cancelled,further messages stay back in queue and not sent to
 	   // aMGateway
-        Thread.sleep(10);
+        Thread.sleep(100);//The thread should be sleeping state so that Scheduler sends the messages to gateway.
+        //The value of sleep time should be greater than that of Resource Processing time which is set while creating a resource.
+        //When two resources with different processing times are created then sleep time should be greater than  Max(processingTime1,ProcessingTime2).
         System.out.println("\n");
         System.out.println("=========Cancelled Messages================\n");
         for(AMMessage msge:asi.getCancelledMessages())
