@@ -10,7 +10,7 @@ import com.jpmc.am.scheduler.messaging.AMResource;
 public class AMResourceImpl extends AMResource {
 
 	/**
-	 * A random value initialized. This can be passed as an argument from user or 
+	 * A random Processing Time value initialized. This can be passed as an argument from user or 
 	 * external system.
 	 */
 	private int processingTime = 100;
@@ -78,8 +78,8 @@ public class AMResourceImpl extends AMResource {
 				
 				if (!msg.isCompleted())
 					aMGateway.send(msg);
-				System.out.println("------The message being sent to AMGateway is "
-						+ msg.getName() + " Grouup is "
+				System.out.println("------The message sent to Gateway is : "
+						+ msg.getName() + " of Group : "
 						+ msg.getGroup().getGroupID()+"------\n");
 				;
 				    msg.setCompleted(true);
@@ -96,17 +96,37 @@ public class AMResourceImpl extends AMResource {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (o instanceof AMResource) {
-			return ((AMResource) o).getName().equals(this.getName());
-		} else {
-			return false;
-		}
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
-	public int hashCode() {
-		return this.getName().hashCode() * 123;
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof AMResourceImpl)) {
+			return false;
+		}
+		AMResourceImpl other = (AMResourceImpl) obj;
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		return true;
 	}
+
 	
 }
