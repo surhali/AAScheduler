@@ -1,15 +1,12 @@
 package com.jpmc.am.scheduler.messaging.client;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.jpmc.am.scheduler.algs.priority.GroupPriorityAlogorithm;
 import com.jpmc.am.scheduler.messaging.AMGateway;
 import com.jpmc.am.scheduler.messaging.AMMessage;
 import com.jpmc.am.scheduler.messaging.AMMessageFactory;
 import com.jpmc.am.scheduler.messaging.AMMessageGroup;
-import com.jpmc.am.scheduler.messaging.AMResourceManager;
 import com.jpmc.am.scheduler.messaging.AMMessageGroup.GroupStatus;
+import com.jpmc.am.scheduler.messaging.AMResourceManager;
 import com.jpmc.am.scheduler.messaging.exceptions.TerminationException;
 import com.jpmc.am.scheduler.messaging.impl.AMGatewayImpl;
 import com.jpmc.am.scheduler.messaging.impl.AMResourceManagerImpl;
@@ -43,7 +40,7 @@ public class AMSchedulerClient {
 		AMMessageGroup grp3 = new AMMessageGroup("Group3");
 		AMMessageGroup grp1 = new AMMessageGroup("Group1");
 		grp1.setGrpStatus(GroupStatus.CANCELLED);
-		AMMessageGroup grp2 = new AMMessageGroup("Group2");
+		
 		
 		try
 		{
