@@ -4,16 +4,14 @@ package com.jpmc.am.scheduler.algs.priority;
  * This groups all the messages according to the like groups
  *  @author Suryasatish
  */
-import java.util.List;
 import java.util.Queue;
 
 import com.jpmc.am.scheduler.messaging.AMMessage;
-import com.jpmc.am.scheduler.messaging.AMMessageGroup;
 import com.jpmc.am.scheduler.messaging.MessagePriorityAlgorithm;
 
 public class GroupPriorityAlogorithm implements MessagePriorityAlgorithm {
 
-	private List<AMMessage> msgList=null;
+	
 	/**
 	 * This method priortizes the messages in such a way that all the messages belonging to the
 	 * same group are sent sequentially when one resource is available.
