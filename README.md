@@ -13,4 +13,10 @@ The basic features are
 
 Build.
 
-This is a fully compiled eclipse project. Can be downloaded onto eclise and can be executed.
+This is a fully compiled eclipse project. Can be downloaded onto eclipse IDE and can be buit and executed.
+
+Please download the source code as zip File from GitHub.
+Extract the Zip and Import the project into Eclipse.
+Add the two Junit Libraries in the build path and compile.
+Run AMSchedulerClient.java, as Java Application to view the output in the Console.
+
