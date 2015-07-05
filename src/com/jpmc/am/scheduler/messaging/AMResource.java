@@ -8,8 +8,8 @@ import java.util.concurrent.CountDownLatch;
  */
 public abstract class AMResource {
 
-	protected String name;
-	protected int priority=0;
+	public String name;
+	public int priority=0;
 	
 	public AMResource(String name) {
 		this.name = name;
