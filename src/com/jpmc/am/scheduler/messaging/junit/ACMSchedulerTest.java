@@ -21,7 +21,7 @@ import com.jpmc.am.scheduler.messaging.impl.AMGatewayImpl;
 import com.jpmc.am.scheduler.messaging.impl.AMResourceManagerImpl;
 import com.jpmc.am.scheduler.messaging.impl.AMSchedulerImpl;
 /**
- * This class basically tests the Grouping functionality of messages,Termination and other features.
+ * This class basically tests the Termination of messages and behavior of cancelled Group.
  * @author Suryasatish
  *
  */
@@ -36,14 +36,14 @@ public class ACMSchedulerTest {
 	public void setUp() throws Exception {
 		asi = new AMSchedulerImpl(resManager,
 				aMGateway,new GroupPriorityAlogorithm());
-		resManager.addResource("1");
+		resManager.addResource("1");//just to be simple only one resource is added..Can add multiple resources also.
 	}
 	
 	/**
 	 * This testcase  populates a message with Termination.Any message
 	 * from the same group should not sent to the aMGateway and an error is thrown.
 	 */
-	
+	@Test
 	public void testTerminationMessage()
 	{
 		asi.start();
@@ -80,7 +80,8 @@ public class ACMSchedulerTest {
 	@Test
 	public void testCancelledGroup() throws TerminationException,InterruptedException
 	{
-		
+		Thread.sleep(1000);//The sleep is added so that the processing times of the schedulers are done and
+		//the thread return to stable state.
 		asi = new AMSchedulerImpl(resManager,
 				aMGateway,new GroupPriorityAlogorithm());
 		resManager.addResource("1");
