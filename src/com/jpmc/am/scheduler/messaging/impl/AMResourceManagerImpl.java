@@ -33,6 +33,16 @@ public class AMResourceManagerImpl extends AMResourceManager {
         //the resource is available the waiting threads are notified.
 	}
 	
+	@Override
+	public synchronized void addResource(AMResource resource) {
+		
+		this.resourceList.add(resource);
+		hasAvailableResources = true;
+		System.out.println("--New Resource is added :"+resource.getName()+"\n");
+        notify();//Other threads will be waiting for resource availablity,once
+        //the resource is available the waiting threads are notified.
+	}
+	
 	/**
 	 * @param resourceList.
 	 */
