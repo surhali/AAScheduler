@@ -2,7 +2,6 @@ package com.jpmc.am.scheduler.messaging.client;
 
 import com.jpmc.am.scheduler.algs.priority.GroupPriorityAlogorithm;
 import com.jpmc.am.scheduler.messaging.AMGateway;
-import com.jpmc.am.scheduler.messaging.AMMessage;
 import com.jpmc.am.scheduler.messaging.AMMessageFactory;
 import com.jpmc.am.scheduler.messaging.AMMessageGroup;
 import com.jpmc.am.scheduler.messaging.AMMessageGroup.GroupStatus;
@@ -35,8 +34,7 @@ public class AMSchedulerClient {
 		
 		rs.start();//The run method of this thread runs continuously in search of messages and resources.
 		
-		AMMessage mess = AMMessageFactory.createMessage("Satish");
-		mess.setTerminatedMessage(false);
+		
 		AMMessageGroup grp3 = new AMMessageGroup("Group3");
 		AMMessageGroup grp1 = new AMMessageGroup("Group1");
 		grp1.setGrpStatus(GroupStatus.CANCELLED);
@@ -44,9 +42,9 @@ public class AMSchedulerClient {
 		
 		try
 		{
-		rs.addMessage(mess);
 		
-		// Can add resources before or after starting the scheduler
+		
+		// Adding one Resource.
 		resManager.addResource("1");
 		//resManager.addResource("2");
 		
