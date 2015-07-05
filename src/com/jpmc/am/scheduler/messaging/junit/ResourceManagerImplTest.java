@@ -4,15 +4,11 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.jpmc.am.scheduler.algs.priority.GroupPriorityAlogorithm;
-import com.jpmc.am.scheduler.messaging.AMGateway;
 import com.jpmc.am.scheduler.messaging.AMMessage;
 import com.jpmc.am.scheduler.messaging.AMMessageFactory;
 import com.jpmc.am.scheduler.messaging.AMResource;
@@ -20,13 +16,13 @@ import com.jpmc.am.scheduler.messaging.AMResourceManager;
 import com.jpmc.am.scheduler.messaging.impl.AMGatewayImpl;
 import com.jpmc.am.scheduler.messaging.impl.AMResourceImpl;
 import com.jpmc.am.scheduler.messaging.impl.AMResourceManagerImpl;
-import com.jpmc.am.scheduler.messaging.impl.AMSchedulerImpl;
 
 public class ResourceManagerImplTest {
 
 	private  AMResourceManager mgr = new AMResourceManagerImpl();;
 	private  List<AMResource> resourceList = new ArrayList<AMResource>();
 	private  int processingTime = 100; 
+	
 	
 	@Before
 	public  void setUp() throws Exception
